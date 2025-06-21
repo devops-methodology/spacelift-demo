@@ -19,7 +19,7 @@ data "aws_ami" "ubuntu" {
     name   = "architecture"
     values = ["x86_64"]
   }
-  owners = ["608729706295"] #canonical
+  owners = ["099720109477"] #canonical
 }
 
 locals {
