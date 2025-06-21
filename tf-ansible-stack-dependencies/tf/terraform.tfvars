@@ -1,1 +1,2 @@
-public_key = "keys/id_rsa.pub"
+
+public_key = "/mnt/workspace/public_key"
