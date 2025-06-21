@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-west-1"
+  region = "ap-south-"
 }
 
 data "aws_ami" "ubuntu" {
@@ -19,7 +19,7 @@ data "aws_ami" "ubuntu" {
     name   = "architecture"
     values = ["x86_64"]
   }
-  owners = ["099720109477"] #canonical
+  owners = ["608729706295"] #canonical
 }
 
 locals {
