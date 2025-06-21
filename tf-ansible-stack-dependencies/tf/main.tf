@@ -2,6 +2,7 @@ provider "aws" {
   region = "ap-south-1"
 }
 
+# Fetch the latest Ubuntu 20.04 AMI
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -19,9 +20,11 @@ data "aws_ami" "ubuntu" {
     name   = "architecture"
     values = ["x86_64"]
   }
-  owners = ["099720109477"] #canonical
+
+  owners = ["099720109477"] # Correct Canonical ID
 }
 
+# Define multiple instances using local map
 locals {
   instances = {
     instance1 = {
@@ -43,11 +46,13 @@ locals {
   }
 }
 
+# Create a key pair using the provided public key
 resource "aws_key_pair" "ssh_key" {
-  key_name   = "ec2"
+  key_name   = "ec2-key"
   public_key = file(var.public_key)
 }
 
+# Create EC2 instances
 resource "aws_instance" "this" {
   for_each                    = local.instances
   ami                         = each.value.ami
